@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <title>SaKItama Studio.</title>
+  <link rel="stylesheet" href="/public/css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="content">
+    <div class="form sign-in">
+      <h2>欢迎回来</h2>
+      <!-- 登录表单 -->
+      <form method="post" action="/login" id="login_form">
+        <label>
+          <span>邮箱</span>
+          <input type="email" id="email" name="loginemail" />
+        </label>
+        <label>
+          <span>密码</span>
+          <input type="password" id="password" name="loginpassword" />
+        </label>
+        <p class="forgot-pass"><a href="javascript:">忘记密码？</a></p>
+        <button type="submit" class="submit" id="login_btn">登 录</button>
+        <a href="/"><button type="button" class="fb-btn">返回 <span>首页</span></button></a>
+      </form>
+    </div>
+    <div class="sub-cont">
+      <div class="img">
+        <div class="img__text m--up">
+          <h2>还未注册？</h2>
+          <p>立即注册，发现大量机会！</p>
+        </div>
+        <div class="img__text m--in">
+          <h2>已有帐号？</h2>
+          <p>有帐号就登录吧，好久不见了！</p>
+        </div>
+        <div class="img__btn">
+          <span class="m--up">注 册</span>
+          <span class="m--in">登 录</span>
+        </div>
+      </div>
+      <!-- 注册表单 -->
+      <form method="post" action="/register" id="register_form">
+        <div class="form sign-up">
+          <h2>立即注册</h2>
+          <label>
+            <span>用户名</span>
+            <input type="text" id="nickname" name="nickname" />
+          </label>
+          <label>
+            <span>邮箱</span>
+            <input type="email" id="email" name="email" />
+          </label>
+          <label>
+            <span>密码</span>
+            <input type="password" id="password" name="password" />
+          </label>
+          <button type="submit" class="submit" id="register_btn">注 册</button>
+          <a href="/"><button type="button" class="fb-btn">返回 <span>首页</span> </button></a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Latest compiled and minified JS -->
+  <script src="//code.jquery.com/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script>
+    // const register_form = document.querySelector('#register_form')
+    // const register_btn = document.querySelector('#register_btn')
+    // window.addEventListener('click', function ()
+    // {
+    //   register_btn
+    // })
+    const img__btn = document.querySelector('.img__btn')
+    const contentEl = document.querySelector('.content')
+    const register_btn = document.querySelector('#register_btn')
+    toastr.options = {
+      closeButton: false,                                            // 是否显示关闭按钮，（提示框右上角关闭按钮）
+      debug: false,                                                    // 是否使用deBug模式
+      progressBar: false,                                            // 是否显示进度条，（设置关闭的超时时间进度条）
+      // positionClass: "toast-top-full-center",
+      positionClass: "toast-top-center",              // 设置提示款显示的位置
+      onclick: null,                                                     // 点击消息框自定义事件 
+      showDuration: "300",                                      // 显示动画的时间
+      hideDuration: "1000",                                     //  消失的动画时间
+      timeOut: "2000",                                             //  自动关闭超时时间 
+      extendedTimeOut: "1000",                             //  加长展示时间
+      showEasing: "swing",                                     //  显示时的动画缓冲方式
+      hideEasing: "linear",                                       //   消失时的动画缓冲方式
+      showMethod: "fadeIn",                                   //   显示时的动画方式
+      hideMethod: "fadeOut"                                   //   消失时的动画方式
+    };
+
+    $('#register_form').on('submit', function (e)
+    {
+      e.preventDefault();
+      var formData = $(this).serialize()
+      $.ajax({
+        url: '/register',
+        type: 'post',
+        data: formData,
+        dataType: 'json',
+        success: function (data)
+        {
+          var err_code = data.err_code
+          if (err_code === 0) {
+            toastr.success('注册成功!');
+            // 异步重定向
+            setTimeout(function ()
+            {
+              window.location.href = '/blog/login'
+            }, 1000)
+          } else if (err_code === 1) {
+            toastr.warning('昵称或邮箱已存在!');
+          } else if (err_code === 500) {
+            toastr.error('服务器正忙!');
+          }
+        }
+      })
+      // console.log(formData)
+    })
+
+    // 登录验证
+    $('#login_form').on('submit', function (e)
+    {
+      e.preventDefault();
+      var formData = $(this).serialize()
+      console.log(formData)
+      $.ajax({
+        url: '/login',
+        type: 'post',
+        data: formData,
+        dataType: 'json',
+        success: function (data)
+        {
+          var err_code = data.err_code
+          if (err_code === 0) {
+            toastr.success('登录成功!');
+            // 异步重定向
+            setTimeout(function ()
+            {
+              window.location.href = '/'
+            }, 1000)
+          } else if (err_code === 1) {
+            toastr.warning('昵称或者邮箱错误!');
+          } else if (err_code === 500) {
+            toastr.error('服务器正忙!');
+          }
+        }
+      })
+
+    })
+
+    document.querySelector('.img__btn').addEventListener('click', function ()
+    {
+      document.querySelector('.content').classList.toggle('s--signup')
+    })
+  </script>
+
+
+</body>
+
+</html>

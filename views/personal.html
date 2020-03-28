@@ -1,0 +1,75 @@
+{{extend './_layouts/layouts.html'}}
+
+{{block 'content'}}
+
+<style>
+  .container {
+    margin-top: 30px;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 24px;
+  }
+
+  .form-group label {
+    padding-bottom: 5px;
+  }
+</style>
+<div class="container">
+  <form action="/personal" method="post" enctype="multipart/form-data" id="personal_form">
+    <div class="form-group">
+      <label for="">昵称</label>
+      <input type="text" class="form-control" name="nickname" value="{{user.nickname}}">
+    </div>
+    <div class="form-group">
+      <label for="">邮箱</label>
+      <input type="email" class="form-control" id="" name="email" value="{{user.email}}">
+    </div>
+    <div class="form-group">
+      <label for="">性别</label>
+      <div class="radio">
+        <label>
+          {{if gender_name=='保密'}}
+          <input type="radio" name="gender_name" id="" value="保密" checked>保密
+          {{else}}
+          <input type="radio" name="gender_name" id="" value="保密">保密
+          {{/if}}
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          {{if gender_name=='女'}}
+          <input type="radio" name="gender_name" id="" value="女" checked>女
+          {{else}}
+          <input type="radio" name="gender_name" id="" value="女">女
+          {{/if}}
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          {{if gender_name=='男'}}
+          <input type="radio" name="gender_name" id="" value="男" checked>男
+          {{else}}
+          <input type="radio" name="gender_name" id="" value="男">男
+          {{/if}}
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">头像</label>
+      <div class="personal-img"><img style="width: 48px;height: 48px;" name="avater" src="{{user.avater}}" alt=""
+          class="img-circle">
+      </div>
+      <input type="file" id="" name="uploadImg">
+      <p class="help-block">请上传您需要修改的头像图片.</p>
+    </div>
+    <div class="form-group">
+      <label for="">简介</label>
+      <textarea name="bio" id="" class="form-control" rows="20" required="required" minlength="5"
+        maxlength="500">{{user.bio}}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">修改</button>
+  </form>
+</div>
+
+
+{{/block}}
