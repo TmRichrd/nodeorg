@@ -1,310 +1,319 @@
-{{extend './_layouts/layouts.html'}}
-
-{{block 'content'}}
+{{extend './_layouts/layouts.html'}} {{block 'content'}}
 <style>
-  .title_info {
-    background-color: #fff;
-    border-radius: 3px;
-    margin-top: 20px;
-    padding: 10px;
-  }
-
-  .title_info h3 {
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 130%;
-  }
-
-  .author_info {
-    padding: 10px;
-  }
-
-  .author_info span {
-    font-size: 12px;
-    color: #838383;
-    line-height: 20px;
-  }
-
-  .author_info span::before {
-    padding-right: 3px;
-    content: '•';
-  }
-
-  .inner_topic {
-    line-height: 2rem;
-    padding: 10px;
-    border-top: 1px solid rgb(229, 229, 229);
-  }
-
-  .topic_content {
-    margin: 0 10px;
-  }
-
-  .content_text {
-    font-size: 15px;
-    line-height: 25.5px;
-  }
-
-  .blog-cut {
-    background-color: rgb(229, 229, 229);
-    color: rgb(153, 153, 153);
-    font-size: 12px;
-    font-weight: 400;
-    margin-right: 10px;
-    vertical-align: middle;
-    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, sans-serif !important;
-  }
-
-  .awdata_author {
-    text-decoration: none;
-    color: #838383;
-    cursor: pointer;
-    font-size: 12px;
-  }
-
-  .awdata_author:hover {
-    color: #838383;
-  }
-
-  #sidebar {
-    width: 290px;
-    font-size: 14px;
-    position: absolute;
-    top: 100px;
-    right: 60px;
-    margin-bottom: 20px;
-  }
-
-  #sidebar .header_author {
-    color: #51585c;
-    border-radius: 3px 3px 0 0;
-  }
-
-  #sidebar .panel {
-    font-size: 13px;
-    border: none;
-  }
-
-  .panel {
-    margin-bottom: 13px;
-  }
-
-  .panel .header_author {
-    padding: 10px;
-    background-color: #f6f6f6;
-    border-radius: 3px 3px 0 0;
-  }
-
-  .header_author .col_fade {
-    color: #444;
-    font-size: 13px;
-  }
-
-  .panel .inner {
-    padding: 10px;
-    border-radius: 0 0 3px 3px;
-  }
-
-  .user_card .user_avatar {
-    vertical-align: middle;
-    margin-right: .5em;
-
-  }
-
-  .user_card .user_avatar img {
-    width: 48px;
-    height: 48px;
-    border-radius: 3px;
-  }
-
-  .clearfix:after,
-  .clearfix:before {
-    display: table;
-    line-height: 0;
-    content: "";
-  }
-
-  .user_name a {
-    color: rgb(119, 128, 135);
-    text-decoration: none;
-  }
-
-  .space {
-    margin-top: 10px;
-  }
-
-  .signature {
-    font-style: italic;
-
-  }
-
-  .floor {
-    margin-top: 10px;
-  }
-
-  .big {
-    font-size: 14px;
-  }
-
-  .comment {
-    margin-top: 10px;
-  }
-
-  .comment .container {
-    background-color: #fff;
-  }
-
-  .inner_top {
-    padding: 10px;
-  }
-
-  .inner_top span {
-    font-size: 13px;
-    color: #838383;
-  }
-
-  .img_icn {
-    width: 52px;
-    float: left;
-  }
-
-  .comm_item {
-    height: auto;
-    margin: 10px;
-  }
-
-  .comm_item img {
-    margin-top: 5px;
-    width: 30px;
-    height: 30px;
-    border-radius: 3px;
-  }
-
-  .info_right span {
-    margin-right: 5px;
-    font-size: 12px;
-  }
-
-  .info_right {
-    font-size: 13px;
-  }
-
-  .info_right a {
-    color: rgb(102, 102, 102);
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  .first_comm {
-    display: inline-block;
-    margin-top: 5px;
-    font-size: 15px;
-  }
-
-  .tijiaocomm_comm {
-    margin-top: 50px;
-  }
-
-  .tijiaocomm {
-    margin-top: 10px;
-  }
+    .title_info {
+        background-color: #fff;
+        border-radius: 3px;
+        margin-top: 20px;
+        padding: 10px;
+    }
+    
+    .title_info h3 {
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 130%;
+    }
+    
+    .author_info {
+        padding: 10px;
+    }
+    
+    .author_info span {
+        font-size: 12px;
+        color: #838383;
+        line-height: 20px;
+    }
+    
+    .author_info span::before {
+        padding-right: 3px;
+        content: '•';
+    }
+    
+    .inner_topic {
+        line-height: 2rem;
+        padding: 10px;
+        border-top: 1px solid rgb(229, 229, 229);
+    }
+    
+    .topic_content {
+        margin: 0 10px;
+    }
+    
+    .content_text {
+        font-size: 15px;
+        line-height: 25.5px;
+    }
+    
+    .blog-cut {
+        background-color: rgb(229, 229, 229);
+        color: rgb(153, 153, 153);
+        font-size: 12px;
+        font-weight: 400;
+        margin-right: 10px;
+        vertical-align: middle;
+        font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, sans-serif !important;
+    }
+    
+    .awdata_author {
+        text-decoration: none;
+        color: #838383;
+        cursor: pointer;
+        font-size: 12px;
+    }
+    
+    .awdata_author:hover {
+        color: #838383;
+    }
+    
+    #sidebar {
+        width: 290px;
+        font-size: 14px;
+        position: absolute;
+        top: 100px;
+        right: 60px;
+        margin-bottom: 20px;
+    }
+    
+    #sidebar .header_author {
+        color: #51585c;
+        border-radius: 3px 3px 0 0;
+    }
+    
+    #sidebar .panel {
+        font-size: 13px;
+        border: none;
+    }
+    
+    .panel {
+        margin-bottom: 13px;
+    }
+    
+    .panel .header_author {
+        padding: 10px;
+        background-color: #f6f6f6;
+        border-radius: 3px 3px 0 0;
+    }
+    
+    .header_author .col_fade {
+        color: #444;
+        font-size: 13px;
+    }
+    
+    .panel .inner {
+        padding: 10px;
+        border-radius: 0 0 3px 3px;
+    }
+    
+    .user_card .user_avatar {
+        vertical-align: middle;
+        margin-right: .5em;
+    }
+    
+    .user_card .user_avatar img {
+        width: 48px;
+        height: 48px;
+        border-radius: 3px;
+    }
+    
+    .clearfix:after,
+    .clearfix:before {
+        display: table;
+        line-height: 0;
+        content: "";
+    }
+    
+    .user_name a {
+        color: rgb(119, 128, 135);
+        text-decoration: none;
+    }
+    
+    .space {
+        margin-top: 10px;
+    }
+    
+    .signature {
+        font-style: italic;
+    }
+    
+    .floor {
+        margin-top: 10px;
+    }
+    
+    .big {
+        font-size: 14px;
+    }
+    
+    .comment {
+        margin-top: 10px;
+    }
+    
+    .comment .container {
+        background-color: #fff;
+    }
+    
+    .inner_top {
+        padding: 10px;
+    }
+    
+    .inner_top span {
+        font-size: 13px;
+        color: #838383;
+    }
+    
+    .img_icn {
+        width: 52px;
+        float: left;
+    }
+    
+    .comm_item {
+        height: auto;
+        margin: 10px;
+    }
+    
+    .comm_item img {
+        margin-top: 5px;
+        width: 30px;
+        height: 30px;
+        border-radius: 3px;
+    }
+    
+    .info_right span {
+        margin-right: 5px;
+        font-size: 12px;
+    }
+    
+    .info_right {
+        font-size: 13px;
+    }
+    
+    .info_right a {
+        color: rgb(102, 102, 102);
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    .first_comm {
+        display: inline-block;
+        margin-top: 5px;
+        font-size: 15px;
+    }
+    
+    .tijiaocomm_comm {
+        margin-top: 50px;
+    }
+    
+    .tijiaocomm {
+        margin-top: 10px;
+    }
 </style>
 <div class="container title_info">
-  <div class="container">
-    <!-- {{awdata}} -->
-    <h3><span class="label label-default blog-cut">{{awdata.cut.cut}}</span>{{awdata.title}}</h3>
-    <div class="author_info">
-      <span>发布于{{dateFormat(awdata.publishTime,'yyyy-mm-dd HH:mm:ss ')}}</span>
-      <span>作者<a class="awdata_author">{{awdata.author.nickname}}</a></span>
-      <span>{{awdata.browse}}次浏览</span>
-      <span>来自{{awdata.cut.cut}}</span>
+    <div class="container">
+        <!-- {{awdata}} -->
+        <h3><span class="label label-default blog-cut">{{awdata.cut.cut}}</span>{{awdata.title}}</h3>
+        <div class="author_info">
+            <span>发布于{{dateFormat(awdata.publishTime,'yyyy-mm-dd HH:mm:ss ')}}</span>
+            <span>作者<a class="awdata_author">{{awdata.author.nickname}}</a></span>
+            <span>{{awdata.browse}}次浏览</span>
+            <span>来自{{awdata.cut.cut}}</span>
+
+        </div>
 
     </div>
-
-  </div>
-  <div class="inner_topic">
-    <div class="topic_content">
-      <div class="markdown-text">
-        <p class="content_text">{{#awdata.content}}</p>
-      </div>
-    </div>
-  </div>
-  <div id="sidebar">
-    <div class="panel">
-      <div class="header_author"><span class="col_fade">作者</span></div>
-      <div class="inner">
-        <div class="user_card">
-          <div>
-            <a href="" class="user_avatar">
-              <img src="{{awdata.author.avater}}" alt=""></a>
-            <span class="user_name"><a>{{awdata.author.nickname}}</a></span>
-            <div class="board clearfix">
-              <div class="floor">
-                <span class="big">积分: {{awdata.author.integral}} </span>
-              </div>
+    <div class="inner_topic">
+        <div class="topic_content">
+            <div class="markdown-text">
+                <p class="content_text">{{#awdata.content}}</p>
             </div>
-            <div class="space clearfix">
-              <span class="signature">
+        </div>
+    </div>
+    <div id="sidebar">
+        <div class="panel">
+            <div class="header_author"><span class="col_fade">作者</span></div>
+            <div class="inner">
+                <div class="user_card">
+                    <div>
+                        <a href="" class="user_avatar">
+                            <img src="{{awdata.author.avater}}" alt=""></a>
+                        <span class="user_name"><a>{{awdata.author.nickname}}</a></span>
+                        <div class="board clearfix">
+                            <div class="floor">
+                                <span class="big">积分: {{awdata.author.integral}} </span>
+                            </div>
+                        </div>
+                        <div class="space clearfix">
+                            <span class="signature">
                 “{{awdata.author.bio}}”
               </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-    <div class="panel">
-      <div class="inner">
-        <ul class="unstyled">
+        <div class="panel">
+            <div class="inner">
+                <ul class="unstyled">
 
-          <li>
-            <div><a href=""></a></div>
-          </li>
+                    <li>
+                        <div>
+                            <a href=""></a>
+                        </div>
+                    </li>
 
-        </ul>
-      </div>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
 
 </div>
 <div class="comment">
-  <div class="container">
-    <div class="comment_an">
-      <div class="inner_top">
-        <span>评论</span>
-      </div>
-      <!-- 评论 -->
-      <div class="comm_items">
-        {{each comments}}
-        <div class="comm_item">
-          <div class="img_icn">
-            <a href="">
-              <img src="{{$value.uid.avater}}" alt="" srcset=""></a>
-          </div>
-          <div class="info_right">
-            <a><span>{{$value.uid.nickname}}</span></a>|&nbsp;<a><span>{{dateFormat($value.time,'yyyy-mm-dd')}}</span></a>|&nbsp;<span>1084491297@qq.com</span>
-          </div>
-          <span class="first_comm">{{$value.content}}</span>
+    <div class="container">
+        <div class="comment_an">
+            <div class="inner_top">
+                <span>评论</span>
+            </div>
+            <!-- 评论 -->
+            <div class="comm_items">
+                {{each comments}}
+                <div class="comm_item">
+                    <div class="img_icn">
+                        <a href="">
+                            <img src="{{$value.uid.avater}}" alt="" srcset=""></a>
+                    </div>
+                    <div class="info_right">
+                        <a><span>{{$value.uid.nickname}}</span></a>|&nbsp;<a><span>{{dateFormat($value.time,'yyyy-mm-dd')}}</span></a>|&nbsp;<span>1084491297@qq.com</span>
+                    </div>
+                    <span class="first_comm">{{$value.content}}</span>
+                </div>
+                {{/each}}
+            </div>
+            <!-- 添加评论 -->
+            {{if user}}
+            <div class="form-group tijiaocomm_comm">
+                <form action="/comments" method="POST" role="form" id="commentFrom" onsubmit="return rules()">
+                    <input class="form-control" type="hidden" name="uid" value="{{@awdata.author._id}}">
+                    <input type="hidden" name="aid" value="{{@awdata._id}}">
+                    <textarea name="content" id="inputComment" class="form-control" rows="3"></textarea>
+                    <div class="tijiaocomm">
+                        <button type="submit" class="btn btn-primary">提交</button>
+                    </div>
+                </form>
+            </div>
+            {{else}}
+            <div>
+                <h2>先进行登录，再对文章进行评论</h2>
+            </div>
+            {{/if}}
         </div>
-        {{/each}}
-      </div>
-      <!-- 添加评论 -->
-      {{if user}}
-      <div class="form-group tijiaocomm_comm">
-        <form action="/comments" method="POST" role="form">
-          <input class="form-control" type="hidden" name="uid" value="{{@awdata.author._id}}">
-          <input type="hidden" name="aid" value="{{@awdata._id}}">
-          <textarea name="content" id="input" class="form-control" rows="3"></textarea>
-          <div class="tijiaocomm">
-            <button type="submit" class="btn btn-primary">提交</button>
-          </div>
-        </form>
-      </div>
-      {{else}}
-      <div>
-        <h2>先进行登录，再对文章进行评论</h2>
-      </div>
-      {{/if}}
     </div>
-  </div>
 </div>
+<script>
+    function rules() {
+        const inputComment = document.getElementById('inputComment').value
+
+        if (inputComment == '' || inputComment == ' ' || inputComment == null) {
+            return false
+        } else {
+            return true
+        }
+    }
+</script>
 {{/block}}

@@ -1,54 +1,115 @@
-<footer>
-  <div class="footer-menus">
-    <div class="contact-us">
-      <p class="menu-title">联系我们</p>
-      <p>地址：中国xx省xx市xx路xx商务中心10号楼</p>
-      <p>电话：+17575757575</p>
-      <p>传真：+17575757575</p>
-      <p>电子邮箱：1084491297@qq.com</p>
+<link rel="stylesheet" href="../../public/css/footer.css">
+<div class="product-number-info" id="productNumber">
+    <div class="product-number-inner">
+        <ul class="q">
+            <li class="li-1"><b><i id="productNumber_1" data-sum="15081">0</i><sup>+</sup></b>
+                <p>精选文章</p>
+            </li>
+            <li class="li-2"><b><i id="productNumber_2" data-sum="121">0</i><em>天</em></b>
+                <p>安全运行</p>
+            </li>
+            <li class="li-3"><b><i id="productNumber_3" data-sum="150">0</i><sup>+</sup></b>
+                <p>覆盖行业和类目</p>
+            </li>
+            <li class="li-4"><b><i id="productNumber_4" data-sum="10">0</i><em>万</em></b>
+                <p>用户</p>
+            </li>
+            <li class="li-5"><b><i id="productNumber_5" data-sum="1541600">0</i><sup>+</sup></b>
+                <p>浏览量</p>
+            </li>
+        </ul>
     </div>
-    <div class="service-menu footer-menu">
-      <p class="menu-title">服务概览</p>
-      <ul class="menu-items">
-        <li><a href="">网站建设</a></li>
-        <li><a href="">域名购买</a></li>
-        <li><a href="">网页设计</a></li>
-        <li><a href="">移动应用</a></li>
-      </ul>
+</div>
+
+<div class="copyright">
+    <div class="copyright_c">
+        <div class="copyright_head">
+            <div class="copyright_L">
+                <p><img src="../../public/images/logo.png" /></p>
+                <span>
+
+        </span>
+                <span>
+          <em>管理员电话：</em>
+          <strong>4000-888-8888</strong>
+        </span>
+                <span>
+          <em>管理员QQ：</em>
+          <a href="#">在线交谈</a>
+        </span>
+            </div>
+            <div class="copyright_C">
+                <div class="copyright_C_list">
+                    <p>关于我们</p>
+                    <div class="about">
+                        <a href="#">博客简介</a>
+                    </div>
+                    <div class="about">
+                        <a href="#">知识产权</a>
+                    </div>
+                    <div class="about">
+                        <a href="#">联系我们</a>
+                    </div>
+                </div>
+                <div class="copyright_C_list">
+                    <p>精品文章</p>
+                    <div class="about">
+                        <a href="#">java</a>
+                        <a href="#">node</a>
+                    </div>
+                    <div class="about">
+                        <a href="#">javascript</a>
+                        <a href="#">c++</a>
+                    </div>
+                    <div class="about">
+                        <a href="#">小程序</a>
+                        <a href="#">php</a>
+                    </div>
+                </div>
+                <div class="copyright_C_list">
+                    <p>建站学院</p>
+                    <div class="about">
+                        <a href="#">服务市场</a>
+                        <a href="#">城市建站</a>
+                    </div>
+                    <div class="about">
+                        <a href="#">帮助中心</a>
+                        <a href="#">快递查询</a>
+                    </div>
+                    <div class="about">
+                        <a href="#">建站学院</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright_R">
+                <span><img src="../../public/images/ewm1.jpg" /></span>
+                <p>扫描关注微信公众号</p>
+            </div>
+        </div>
+        <div class="copyright_bottom">
+            <span>xxB2-xxxxxxx xx网安备1101080xxxxxxx号 陕ICP备xxxxxxxx号-32 </span>
+            <p>建站创建能为您带去订单的网站</p>
+        </div>
     </div>
-    <div class="service-menu footer-menu">
-      <p class="menu-title">JAVA</p>
-      <ul class="menu-items">
-        <li><a href="">网站建设</a></li>
-        <li><a href="">域名购买</a></li>
-        <li><a href="">网页设计</a></li>
-        <li><a href="">移动应用</a></li>
-      </ul>
-    </div>
-    <div class="service-menu footer-menu">
-      <p class="menu-title">web前端</p>
-      <ul class="menu-items">
-        <li><a href="">网站建设</a></li>
-        <li><a href="">域名购买</a></li>
-        <li><a href="">网页设计</a></li>
-        <li><a href="">移动应用</a></li>
-      </ul>
-    </div>
-    <div class="service-menu footer-menu">
-      <p class="menu-title">APP开发</p>
-      <ul class="menu-items">
-        <li><a href="">网站建设</a></li>
-        <li><a href="">域名购买</a></li>
-        <li><a href="">网页设计</a></li>
-        <li><a href="">移动应用</a></li>
-      </ul>
-    </div>
-    <p class="icp-info">
-      京ICP备 12345678901-1号
-    </p>
-    <p class="rights">&copy;2020 XX科技 - 响应式网络公司官网 版权所有</p>
-    <div class="scrollToTop">
-      <a href="#home"><i class="fas fa-chevron-up"></i></a>
-    </div>
-  </div>
-</footer>
+</div>
+
+
+<!--数字滚动插件countUp-->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="../../public/js/count.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    productNumber = function() {
+        var arr = [];
+        $('#productNumber li').each(function(i, dom) {
+            var iDom = $(dom).find('i'),
+                decimals = 0,
+                sum = iDom.data('sum');
+            //初始化传参，参数为上面注释中的参数    
+            arr.push(new CountUp(iDom.attr('id'), 0, sum, decimals, 4, {
+                useEasing: true, //效果
+                separator: '' //数字分隔符
+            }));
+            arr[i].start();
+        });
+    }();
+</script>

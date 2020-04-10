@@ -1,184 +1,177 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
-
 <header>
-  <div class="logo"><a href="/">SaKItama Studio.</a></div>
-  <nav>
-    <style>
-      .acater-setting {
-        display: none;
-        position: absolute;
-        right: 115px;
-        background-color: #494949;
-        margin-top: 8px;
-      }
+    <div class="logo"><a href="/">SaKItama Studio.</a></div>
+    <nav>
+        <style>
+            .acater-setting {
+                display: none;
+                position: absolute;
+                right: 115px;
+                background-color: #494949;
+                margin-top: 8px;
+            }
+            
+            .acater-setting li {
+                padding: 5px 7px;
+                cursor: pointer;
+                list-style-type: none;
+                color: aliceblue;
+            }
+            
+            .acater-setting li:hover {
+                background-color: #8b8b8b;
+            }
+            
+            .acater-setting li:hover a {
+                color: #ff434f;
+            }
+            
+            .acater-setting li a {
+                font-size: 14px;
+            }
+            
+            .nickname {
+                cursor: pointer;
+            }
+            
+            .nickname .fas {
+                margin-right: 10px;
+            }
+            
+            .nickname img {
+                object-fit: cover;
+                width: 32px;
+                height: 32px;
+                margin-right: 5px;
+                border-radius: 50%;
+            }
+            
+            .acater-toggle {
+                display: block;
+                transition: display 1s ease-in-out;
+            }
+            
+            .changeP {
+                padding: 10px 20px;
+            }
+            
+            .changeNP {
+                padding: 0px 20px;
+            }
+        </style>
+        <a href="/">首页</a>
+        <a href="">新手入门</a>
+        <a href="">API</a>
+        <a href="">关于</a> {{if user}}
+        <a class="nickname"><img src="{{user.avater}}" alt="" srcset="">{{user.nickname}}
+        </a>
+        <ul class="acater-setting">
+            <li><a href="/personal">个人主页</a></li>
+            <li><a type="button" data-toggle="modal" data-target="#myModal">修改密码</a></li>
+            <li><a>设置</a></li>
+            <li><a href="/logout">退出</a></li>
+        </ul>
+        <a href="/title">发布</a>
+        <a href=""><i class="fas fa-search"></i></a> {{else}}
+        <a href="/blog/login">登录</a>
+        <a href="/blog/login">注册</a>
+        <a href=""><i class="fas fa-search"></i></a> {{/if}}
 
-      .acater-setting li {
-        padding: 5px 7px;
-        cursor: pointer;
-        list-style-type: none;
-        color: aliceblue;
-      }
-
-      .acater-setting li:hover {
-        background-color: #8b8b8b;
-
-      }
-
-      .acater-setting li:hover a {
-        color: #ff434f;
-      }
-
-      .acater-setting li a {
-        font-size: 14px;
-      }
-
-      .nickname {
-        cursor: pointer;
-      }
-
-      .nickname .fas {
-        margin-right: 10px;
-      }
-
-      .nickname img {
-        object-fit: cover;
-        width: 32px;
-        height: 32px;
-        margin-right: 5px;
-        border-radius: 50%;
-      }
-
-      .acater-toggle {
-        display: block;
-        transition: display 1s ease-in-out;
-      }
-
-      .changeP {
-        padding: 10px 20px;
-      }
-
-      .changeNP {
-        padding: 0px 20px;
-      }
-    </style>
-    <a href="/">首页</a>
-    <a href="">新手入门</a>
-    <a href="">API</a>
-    <a href="">关于</a>
-    {{if user}}
-    <a class="nickname"><img src="{{user.avater}}" alt="" srcset="">{{user.nickname}}
-    </a>
-    <ul class="acater-setting">
-      <li><a href="/personal">个人主页</a></li>
-      <li><a type="button" data-toggle="modal" data-target="#myModal">修改密码</a></li>
-      <li><a>设置</a></li>
-      <li><a href="/logout">退出</a></li>
-    </ul>
-    <a href="/title">发布</a>
-    <a href=""><i class="fas fa-search"></i></a>
-    {{else}}
-    <a href="/blog/login">登录</a>
-    <a href="/blog/login">注册</a>
-    <a href=""><i class="fas fa-search"></i></a>
-    {{/if}}
-
-    <!-- <div class="burger">
+        <!-- <div class="burger">
       <div class="top-line"></div>
       <div class="middle-line"></div>
       <div class="bottom-line"></div>
     </div> -->
-  </nav>
-  <!-- 折叠按钮 -->
-  <div class="burger">
-    <div class="burger-line1"></div>
-    <div class="burger-line2"></div>
-    <div class="burger-line3"></div>
-  </div>
+    </nav>
+    <!-- 折叠按钮 -->
+    <div class="burger">
+        <div class="burger-line1"></div>
+        <div class="burger-line2"></div>
+        <div class="burger-line3"></div>
+    </div>
 </header>
 
 <!-- 拟态框 -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">修改密码</h4>
-      </div>
-      <form method="post" action="/changePassword" id="change_form">
-        <div class="form-group changeP">
-          <label for="">新密码</label>
-          <input id="newpassword" type="password" class="form-control" name="newpassword" placeholder="请输入新密码">
-        </div>
-        <div class="form-group changeNP">
-          <label for="">确认密码</label>
-          <input id="newpass_word" type="password" class="form-control" name="newpass_word" placeholder="请确认新的密码">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-          <button id="changeSum" type="submit" class="btn btn-primary">提交更改</button>
-        </div>
-      </form>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+            </div>
+            <form method="post" action="/changePassword" id="change_form">
+                <div class="form-group changeP">
+                    <label for="">新密码</label>
+                    <input id="newpassword" type="password" class="form-control" name="newpassword" placeholder="请输入新密码">
+                </div>
+                <div class="form-group changeNP">
+                    <label for="">确认密码</label>
+                    <input id="newpass_word" type="password" class="form-control" name="newpass_word" placeholder="请确认新的密码">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id="changeSum" type="submit" class="btn btn-primary">提交更改</button>
+                </div>
+            </form>
 
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal -->
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
 </div>
 
 <!-- Latest compiled and minified JS -->
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script>
-  $(function ()
-  {
-    toastr.options = {
-      closeButton: false,                                            // 是否显示关闭按钮，（提示框右上角关闭按钮）
-      debug: false,                                                    // 是否使用deBug模式
-      progressBar: false,                                            // 是否显示进度条，（设置关闭的超时时间进度条）
-      // positionClass: "toast-top-full-center",
-      positionClass: "toast-top-center",              // 设置提示款显示的位置
-      onclick: null,                                                     // 点击消息框自定义事件 
-      showDuration: "300",                                      // 显示动画的时间
-      hideDuration: "1000",                                     //  消失的动画时间
-      timeOut: "2000",                                             //  自动关闭超时时间 
-      extendedTimeOut: "1000",                             //  加长展示时间
-      showEasing: "swing",                                     //  显示时的动画缓冲方式
-      hideEasing: "linear",                                       //   消失时的动画缓冲方式
-      showMethod: "fadeIn",                                   //   显示时的动画方式
-      hideMethod: "fadeOut"                                   //   消失时的动画方式
-    };
-    // var pw1 = $('input[name=newpassword]').val(),
-    //   pw2 = $('input[name=newpass_word]').val()
+    $(function() {
+        toastr.options = {
+            closeButton: false, // 是否显示关闭按钮，（提示框右上角关闭按钮）
+            debug: false, // 是否使用deBug模式
+            progressBar: false, // 是否显示进度条，（设置关闭的超时时间进度条）
+            // positionClass: "toast-top-full-center",
+            positionClass: "toast-top-center", // 设置提示款显示的位置
+            onclick: null, // 点击消息框自定义事件 
+            showDuration: "300", // 显示动画的时间
+            hideDuration: "1000", //  消失的动画时间
+            timeOut: "2000", //  自动关闭超时时间 
+            extendedTimeOut: "1000", //  加长展示时间
+            showEasing: "swing", //  显示时的动画缓冲方式
+            hideEasing: "linear", //   消失时的动画缓冲方式
+            showMethod: "fadeIn", //   显示时的动画方式
+            hideMethod: "fadeOut" //   消失时的动画方式
+        };
+        // var pw1 = $('input[name=newpassword]').val(),
+        //   pw2 = $('input[name=newpass_word]').val()
 
-    $('#change_form').on('submit', e =>
-    {
-      e.preventDefault()
-      var pw1 = $('input[name=newpassword]').val(),
-        pw2 = $('input[name=newpass_word]').val()
-      var uppass = {
-        newpassword: pw1,
-        newpass_word: pw2
-      }
-      if (pw1 == pw2) {
-        $.ajax({
-          url: '/changePassword',
-          type: 'post',
-          data: uppass,
-          success: data =>
-          {
-            var err_code = data.err_code
-            if (err_code === 0) {
-              toastr.success('修改成功');
-              setTimeout(function ()
-              {
-                window.location.href = '/'
-              }, 500)
-            } else if (err_code === 1) {
-              toastr.error('修改失败!')
+        $('#change_form').on('submit', e => {
+            e.preventDefault()
+            var pw1 = $('input[name=newpassword]').val(),
+                pw2 = $('input[name=newpass_word]').val()
+            var uppass = {
+                newpassword: pw1,
+                newpass_word: pw2
             }
-          }
+            if (pw1 == pw2) {
+                $.ajax({
+                    url: '/changePassword',
+                    type: 'post',
+                    data: uppass,
+                    success: data => {
+                        var err_code = data.err_code
+                        if (err_code === 0) {
+                            toastr.success('修改成功');
+                            setTimeout(function() {
+                                window.location.href = '/'
+                            }, 500)
+                        } else if (err_code === 1) {
+                            toastr.error('修改失败!')
+                        }
+                    }
+                })
+            } else {
+                toastr.error('密码不一致,请重新输入!')
+            }
         })
-      } else {
-        toastr.error('密码不一致,请重新输入!')
-      }
     })
-  })
 </script>
